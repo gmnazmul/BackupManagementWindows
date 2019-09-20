@@ -1,1 +1,1 @@
-# Backup Management Sustem for windows operating system.
+# Backup Management System for windows operating system.
