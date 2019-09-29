@@ -20,7 +20,7 @@ namespace BackupManagement
 
         private void BtnStart_Click(object sender, EventArgs e)
         {
-            string constring = "server=localhost;user=root;pwd=root;database=test;";
+            string constring = "server=localhost;user=root;pwd=root;database=netcore_cms_oua;";
             string file = "D:\\backup.sql";
             using (MySqlConnection conn = new MySqlConnection(constring))
             {
@@ -30,11 +30,18 @@ namespace BackupManagement
                     {
                         cmd.Connection = conn;
                         conn.Open();
+                        mb.ExportInfo.RowsExportMode = RowsDataExportMode.OnDuplicateKeyUpdate;
                         mb.ExportToFile(file);
                         conn.Close();
                     }
                 }
             }
+        }
+
+        private void btnDbSettings_Click(object sender, EventArgs e)
+        {
+            FrmDbSettings frmDbSettings = new FrmDbSettings();
+            frmDbSettings.ShowDialog();            
         }
     }
 }

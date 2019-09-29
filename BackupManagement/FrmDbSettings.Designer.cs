@@ -1,6 +1,6 @@
 ﻿namespace BackupManagement
 {
-    partial class FrmSettings
+    partial class FrmDbSettings
     {
         /// <summary>
         /// Required designer variable.
@@ -33,8 +33,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -46,7 +48,7 @@
             this.textBox1.Location = new System.Drawing.Point(3, 16);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(794, 169);
+            this.textBox1.Size = new System.Drawing.Size(794, 251);
             this.textBox1.TabIndex = 0;
             // 
             // groupBox1
@@ -55,7 +57,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 139);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(800, 188);
+            this.groupBox1.Size = new System.Drawing.Size(800, 270);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Connection Strings (each line shoult contain one connection string)";
@@ -91,6 +93,14 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Options";
             // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(133, 17);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 1;
+            this.textBox3.Text = "360";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -100,23 +110,39 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Backup Every (minute)";
             // 
-            // textBox3
+            // btnSave
             // 
-            this.textBox3.Location = new System.Drawing.Point(133, 17);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 1;
+            this.btnSave.Location = new System.Drawing.Point(323, 415);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // FrmSettings
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(405, 415);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 5;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // FrmDbSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox3);
-            this.Name = "FrmSettings";
+            this.Name = "FrmDbSettings";
             this.Text = "Settings";
+            this.Load += new System.EventHandler(this.FrmDbSettings_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -136,5 +162,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnClose;
     }
 }
