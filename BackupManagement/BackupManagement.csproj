@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\DBSettings.cs" />
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +66,7 @@
     <Compile Include="FrmDbSettings.Designer.cs">
       <DependentUpon>FrmDbSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\BkupSettings.cs" />
     <Compile Include="Helper\EncryptDecrypt.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
