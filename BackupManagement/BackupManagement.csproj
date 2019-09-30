@@ -65,6 +65,7 @@
     <Compile Include="FrmDbSettings.Designer.cs">
       <DependentUpon>FrmDbSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\EncryptDecrypt.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmMain.resx">
