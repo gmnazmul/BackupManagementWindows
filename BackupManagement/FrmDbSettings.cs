@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BackupManagement.Entities;
 using BackupManagement.Helper;
@@ -22,7 +14,7 @@ namespace BackupManagement
 
         private void FrmDbSettings_Load(object sender, EventArgs e)
         {
-            DBSettings dBSettings = BkupSettings.GetSettings();
+            DBSettings dBSettings = BkupSettings.GetSettingsDB();
             txtBackupStartHour.Text = dBSettings.startHour.ToString();
             txtBackupStartMinute.Text = dBSettings.startMinute.ToString();
             txtBackupMinute.Text = dBSettings.backupMinute.ToString();
@@ -41,7 +33,7 @@ namespace BackupManagement
                 dBSettings.isZipEnable = true;
             dBSettings.outputPath = txtOutputPath.Text;
             dBSettings.connectionStrings = txtConnectionStrings.Text;
-            BkupSettings.SaveSettings(dBSettings);
+            BkupSettings.SaveSettingsDB(dBSettings);
             MessageBox.Show("Settings Saved");
         }
 

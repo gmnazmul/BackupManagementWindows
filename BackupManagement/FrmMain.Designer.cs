@@ -60,7 +60,7 @@
             this.Controls.Add(this.btnDbSettings);
             this.Controls.Add(this.btnStart);
             this.Name = "FrmMain";
-            this.Text = "Form1";
+            this.Text = "Backup Management System";
             this.ResumeLayout(false);
 
         }

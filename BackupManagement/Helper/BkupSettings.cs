@@ -11,10 +11,10 @@ namespace BackupManagement.Helper
 {
     public static class BkupSettings
     {
-        private static string dbSettingsPath = Path.Combine(Application.StartupPath, "dbConfig.zipConf");
+        private static string dbSettingsPath = Path.Combine(Application.StartupPath, "BackupConfigDB.zipConf");
         private static string passPhrase = "SecretKey";
 
-        public static DBSettings GetSettings()
+        public static DBSettings GetSettingsDB()
         {
             DBSettings dBSettings = new DBSettings();
             dBSettings.outputPath = Path.Combine(Application.StartupPath, "OutputFolder");
@@ -68,13 +68,8 @@ namespace BackupManagement.Helper
             return dBSettings;
         }
 
-        public static bool SaveSettings(DBSettings dBSettings)
+        public static bool SaveSettingsDB(DBSettings dBSettings)
         {
-            if (File.Exists(dbSettingsPath) == false)
-            {
-                File.Create(dbSettingsPath);
-            }
-
             using (var writer = new StreamWriter(dbSettingsPath))
             {
                 writer.WriteLine(EncryptDecrypt.EncryptString(dBSettings.startHour.ToString(), passPhrase));
