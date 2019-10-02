@@ -65,7 +65,7 @@
             this.groupBox1.Size = new System.Drawing.Size(800, 270);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Connection Strings (each line shoult contain one connection string)";
+            this.groupBox1.Text = "Connection Strings (each line should contain one connection string)";
             // 
             // groupBox2
             // 
@@ -202,7 +202,7 @@
             this.Name = "FrmDbSettings";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Settings";
+            this.Text = "DB Settings";
             this.Load += new System.EventHandler(this.FrmDbSettings_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -35,6 +35,7 @@ namespace BackupManagement
             dBSettings.connectionStrings = txtConnectionStrings.Text;
             BkupSettings.SaveSettingsDB(dBSettings);
             MessageBox.Show("Settings Saved");
+            btnClose.PerformClick();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
