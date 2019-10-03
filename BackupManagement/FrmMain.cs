@@ -8,7 +8,7 @@ namespace BackupManagement
 {
     public partial class FrmMain : Form
     {
-        string machineName = System.Environment.MachineName;
+        string machineName = Environment.MachineName;
         string seperator = "----------------------------------------------------";
         public FrmMain()
         {
