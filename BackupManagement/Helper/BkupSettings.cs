@@ -210,15 +210,15 @@ namespace BackupManagement.Helper
                     process.WaitForExit();
                     //Thread.Sleep(5);
                     if (dBSettings.isZipEnable == true)
-                    {   
-                        //System.IO.Compression.ZipFile.CreateFromDirectory(Path.Combine(directoryPath, "temp"), Path.Combine(directoryPath, $"{nameDatePart}_{databaseName}.zip"));
-                        
+                    {
+                        System.IO.Compression.ZipFile.CreateFromDirectory(Path.Combine(directoryPath, "temp"), Path.Combine(directoryPath, $"{nameDatePart}_{databaseName}.zip"));
+
                     }
                 }
             }
             if (Directory.Exists(Path.Combine(directoryPath, "temp")))
             {
-                //Directory.Delete(Path.Combine(directoryPath, "temp"), true);
+                Directory.Delete(Path.Combine(directoryPath, "temp"), true);
             }
             return true;
         }

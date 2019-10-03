@@ -38,19 +38,19 @@
             this.btnBackupFolder = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblTime = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.timerDateTime = new System.Windows.Forms.Timer(this.components);
-            this.lblDate = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.lblLastData = new System.Windows.Forms.Label();
             this.lblLogs = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lblLastData = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.lblTime = new System.Windows.Forms.Label();
+            this.timerDateTime = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStart
@@ -164,17 +164,45 @@
             this.panel2.Size = new System.Drawing.Size(605, 450);
             this.panel2.TabIndex = 1;
             // 
-            // lblTime
+            // panel5
             // 
-            this.lblTime.AutoSize = true;
-            this.lblTime.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblTime.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTime.ForeColor = System.Drawing.Color.White;
-            this.lblTime.Location = new System.Drawing.Point(580, 0);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(25, 29);
-            this.lblTime.TabIndex = 0;
-            this.lblTime.Text = "-";
+            this.panel5.Controls.Add(this.lblLogs);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 144);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(605, 306);
+            this.panel5.TabIndex = 3;
+            // 
+            // lblLogs
+            // 
+            this.lblLogs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblLogs.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.lblLogs.Location = new System.Drawing.Point(0, 0);
+            this.lblLogs.Name = "lblLogs";
+            this.lblLogs.Size = new System.Drawing.Size(605, 306);
+            this.lblLogs.TabIndex = 2;
+            this.lblLogs.Text = "--------------------------";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.lblLastData);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 44);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(605, 100);
+            this.panel4.TabIndex = 2;
+            // 
+            // lblLastData
+            // 
+            this.lblLastData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblLastData.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLastData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.lblLastData.Location = new System.Drawing.Point(0, 0);
+            this.lblLastData.Name = "lblLastData";
+            this.lblLastData.Size = new System.Drawing.Size(605, 100);
+            this.lblLastData.TabIndex = 2;
+            this.lblLastData.Text = "--------------------------";
             // 
             // panel3
             // 
@@ -185,12 +213,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(605, 44);
             this.panel3.TabIndex = 1;
-            // 
-            // timerDateTime
-            // 
-            this.timerDateTime.Enabled = true;
-            this.timerDateTime.Interval = 1000;
-            this.timerDateTime.Tick += new System.EventHandler(this.timerDateTime_Tick);
             // 
             // lblDate
             // 
@@ -204,45 +226,23 @@
             this.lblDate.TabIndex = 1;
             this.lblDate.Text = "-";
             // 
-            // panel4
+            // lblTime
             // 
-            this.panel4.Controls.Add(this.lblLastData);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 44);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(605, 100);
-            this.panel4.TabIndex = 2;
+            this.lblTime.AutoSize = true;
+            this.lblTime.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblTime.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.ForeColor = System.Drawing.Color.White;
+            this.lblTime.Location = new System.Drawing.Point(580, 0);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(25, 29);
+            this.lblTime.TabIndex = 0;
+            this.lblTime.Text = "-";
             // 
-            // panel5
+            // timerDateTime
             // 
-            this.panel5.Controls.Add(this.lblLogs);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(0, 144);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(605, 306);
-            this.panel5.TabIndex = 3;
-            // 
-            // lblLastData
-            // 
-            this.lblLastData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblLastData.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLastData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.lblLastData.Location = new System.Drawing.Point(0, 0);
-            this.lblLastData.Name = "lblLastData";
-            this.lblLastData.Size = new System.Drawing.Size(605, 100);
-            this.lblLastData.TabIndex = 2;
-            this.lblLastData.Text = "--------------------------";
-            // 
-            // lblLogs
-            // 
-            this.lblLogs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblLogs.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.lblLogs.Location = new System.Drawing.Point(0, 0);
-            this.lblLogs.Name = "lblLogs";
-            this.lblLogs.Size = new System.Drawing.Size(605, 306);
-            this.lblLogs.TabIndex = 2;
-            this.lblLogs.Text = "--------------------------";
+            this.timerDateTime.Enabled = true;
+            this.timerDateTime.Interval = 1000;
+            this.timerDateTime.Tick += new System.EventHandler(this.timerDateTime_Tick);
             // 
             // FrmMain
             // 
@@ -257,10 +257,10 @@
             this.Text = "Backup Management System";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
