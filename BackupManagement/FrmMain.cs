@@ -8,6 +8,7 @@ namespace BackupManagement
 {
     public partial class FrmMain : Form
     {
+        string machineName = System.Environment.MachineName;
         public FrmMain()
         {
             InitializeComponent();
@@ -45,34 +46,39 @@ namespace BackupManagement
             string directoryPath = Path.Combine(folderSettings.outputPath, nameDatePart);
             if (Directory.Exists(directoryPath) == false) { Directory.CreateDirectory(directoryPath); }
 
-            BkupSettings.BackupFolders(directoryPath);
+            BkupSettings.BackupFolders(directoryPath, nameDatePart);
 
             MessageBox.Show("Backup Complated");
         }
 
         private void btnBackupAll_Click(object sender, EventArgs e)
         {
-
             DBSettings dBSettings = BkupSettings.GetSettingsDB();
             string nameDatePart = DateTime.Now.ToString("yyyyMMdd_HHmm");
-            string directoryPath = Path.Combine(dBSettings.outputPath, nameDatePart);
+            string directoryPath = Path.Combine(dBSettings.outputPath, machineName + "_" + nameDatePart);
             if (Directory.Exists(directoryPath) == false) { Directory.CreateDirectory(directoryPath); }
 
             BkupSettings.BackupDatabase(directoryPath, nameDatePart);
 
-            BkupSettings.BackupFolders(directoryPath);
+            BkupSettings.BackupFolders(directoryPath, nameDatePart);
 
             MessageBox.Show("Backup Complated");
         }
 
         private void BtnStart_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void timerDateTime_Tick(object sender, EventArgs e)
+        {
+            lblDate.Text = DateTime.Now.ToString("dd MMMM yyyy") + Environment.NewLine + machineName;
+            lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
         }
     }
 }

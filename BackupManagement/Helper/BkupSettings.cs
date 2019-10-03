@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -184,8 +185,19 @@ namespace BackupManagement.Helper
                 if (string.IsNullOrEmpty(databaseName) == false)
                 {
                     string outputFileFullPath = Path.Combine(directoryPath, $"{nameDatePart}_{databaseName}.sql");
-                    string arguments = $"/C mysqldump.exe -P {port} -h {host} --skip-extended-insert -u {user} -p{pass} {databaseName} > \"{outputFileFullPath}\"";
+                    string outputFileFullPathTemp = Path.Combine(directoryPath, "temp", $"{nameDatePart}_{databaseName}.sql");
+                    string arguments = $"/C mysqldump.exe -P {port} -h {host} --skip-extended-insert -u {user} -p{pass} {databaseName} > ";
 
+                    if (dBSettings.isZipEnable == true)
+                    {
+                        if (Directory.Exists(Path.Combine(directoryPath, "temp"))==false)
+                        {
+                            Directory.CreateDirectory(Path.Combine(directoryPath, "temp"));
+                        }
+                        arguments += $" \"{outputFileFullPathTemp}\"";
+                    }
+                    else
+                        arguments += $" \"{outputFileFullPath}\"";
 
                     Process process = new Process();
                     ProcessStartInfo startInfo = new ProcessStartInfo();
@@ -196,12 +208,22 @@ namespace BackupManagement.Helper
                     process.StartInfo = startInfo;
                     process.Start();
                     process.WaitForExit();
+                    //Thread.Sleep(5);
+                    if (dBSettings.isZipEnable == true)
+                    {   
+                        //System.IO.Compression.ZipFile.CreateFromDirectory(Path.Combine(directoryPath, "temp"), Path.Combine(directoryPath, $"{nameDatePart}_{databaseName}.zip"));
+                        
+                    }
                 }
+            }
+            if (Directory.Exists(Path.Combine(directoryPath, "temp")))
+            {
+                //Directory.Delete(Path.Combine(directoryPath, "temp"), true);
             }
             return true;
         }
 
-        public static bool BackupFolders(string directoryPath)
+        public static bool BackupFolders(string directoryPath, string nameDatePart)
         {
             FolderSettings folderSettings = GetSettingsFolder();
 
@@ -212,7 +234,7 @@ namespace BackupManagement.Helper
 
             foreach (var folderPath in folderPaths)
             {
-                string outputFileName = folderPath.Replace("\\", "_").Replace(":", "") + ".zip";
+                string outputFileName = nameDatePart + "_" + folderPath.Replace("\\", "_").Replace(":", "") + ".zip";
                 System.IO.Compression.ZipFile.CreateFromDirectory(folderPath, Path.Combine(directoryPath, outputFileName));
             }
             return true;
