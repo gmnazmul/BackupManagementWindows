@@ -5,9 +5,9 @@ using BackupManagement.Helper;
 
 namespace BackupManagement
 {
-    public partial class FrmDbSettings : Form
+    public partial class FrmSettingsDB : Form
     {
-        public FrmDbSettings()
+        public FrmSettingsDB()
         {
             InitializeComponent();
         }

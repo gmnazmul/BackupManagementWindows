@@ -1,6 +1,6 @@
 ﻿namespace BackupManagement
 {
-    partial class FrmDbSettings
+    partial class FrmSettingsFolder
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtConnectionStrings = new System.Windows.Forms.TextBox();
+            this.txtFolderPaths = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtOutputPath = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.chkZipDbFiles = new System.Windows.Forms.CheckBox();
+            this.chkZipFolders = new System.Windows.Forms.CheckBox();
             this.txtBackupStartMinute = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtBackupStartHour = new System.Windows.Forms.TextBox();
@@ -47,25 +47,25 @@
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtConnectionStrings
+            // txtFolderPaths
             // 
-            this.txtConnectionStrings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtConnectionStrings.Location = new System.Drawing.Point(3, 16);
-            this.txtConnectionStrings.Multiline = true;
-            this.txtConnectionStrings.Name = "txtConnectionStrings";
-            this.txtConnectionStrings.Size = new System.Drawing.Size(794, 251);
-            this.txtConnectionStrings.TabIndex = 0;
+            this.txtFolderPaths.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtFolderPaths.Location = new System.Drawing.Point(3, 16);
+            this.txtFolderPaths.Multiline = true;
+            this.txtFolderPaths.Name = "txtFolderPaths";
+            this.txtFolderPaths.Size = new System.Drawing.Size(794, 251);
+            this.txtFolderPaths.TabIndex = 0;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtConnectionStrings);
+            this.groupBox1.Controls.Add(this.txtFolderPaths);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 139);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(800, 270);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Connection Strings (each line should contain one connection string)";
+            this.groupBox1.Text = "Folder Paths (each line should contain one folder path)";
             // 
             // groupBox2
             // 
@@ -88,7 +88,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.chkZipDbFiles);
+            this.groupBox3.Controls.Add(this.chkZipFolders);
             this.groupBox3.Controls.Add(this.txtBackupStartMinute);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.txtBackupStartHour);
@@ -103,15 +103,18 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Options";
             // 
-            // chkZipDbFiles
+            // chkZipFolders
             // 
-            this.chkZipDbFiles.AutoSize = true;
-            this.chkZipDbFiles.Location = new System.Drawing.Point(132, 66);
-            this.chkZipDbFiles.Name = "chkZipDbFiles";
-            this.chkZipDbFiles.Size = new System.Drawing.Size(83, 17);
-            this.chkZipDbFiles.TabIndex = 2;
-            this.chkZipDbFiles.Text = "Zip DB Files";
-            this.chkZipDbFiles.UseVisualStyleBackColor = true;
+            this.chkZipFolders.AutoSize = true;
+            this.chkZipFolders.Checked = true;
+            this.chkZipFolders.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkZipFolders.Enabled = false;
+            this.chkZipFolders.Location = new System.Drawing.Point(132, 66);
+            this.chkZipFolders.Name = "chkZipFolders";
+            this.chkZipFolders.Size = new System.Drawing.Size(78, 17);
+            this.chkZipFolders.TabIndex = 2;
+            this.chkZipFolders.Text = "Zip Folders";
+            this.chkZipFolders.UseVisualStyleBackColor = true;
             // 
             // txtBackupStartMinute
             // 
@@ -187,7 +190,7 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // FrmDbSettings
+            // FrmFolderSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -199,11 +202,11 @@
             this.Controls.Add(this.groupBox3);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FrmDbSettings";
+            this.Name = "FrmFolderSettings";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "DB Settings";
-            this.Load += new System.EventHandler(this.FrmDbSettings_Load);
+            this.Text = "Folder Settings";
+            this.Load += new System.EventHandler(this.FrmFolderSettings_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -216,7 +219,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtConnectionStrings;
+        private System.Windows.Forms.TextBox txtFolderPaths;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtOutputPath;
@@ -225,7 +228,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.CheckBox chkZipDbFiles;
+        private System.Windows.Forms.CheckBox chkZipFolders;
         private System.Windows.Forms.TextBox txtBackupStartMinute;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtBackupStartHour;

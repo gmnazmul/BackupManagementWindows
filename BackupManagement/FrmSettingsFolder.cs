@@ -5,9 +5,9 @@ using BackupManagement.Helper;
 
 namespace BackupManagement
 {
-    public partial class FrmFolderSettings : Form
+    public partial class FrmSettingsFolder : Form
     {
-        public FrmFolderSettings()
+        public FrmSettingsFolder()
         {
             InitializeComponent();
         }
