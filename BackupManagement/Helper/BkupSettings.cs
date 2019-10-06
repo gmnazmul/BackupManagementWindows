@@ -254,65 +254,6 @@ namespace BackupManagement.Helper
         }
         #endregion
 
-        public static bool BackupDatabase(string directoryPath, string nameDatePart)
-        {
-            DBSettings dBSettings = GetSettingsDB();
-
-            string[] connectionStrings = dBSettings.connectionStrings.Split(
-                                            new[] { Environment.NewLine },
-                                            StringSplitOptions.RemoveEmptyEntries
-                                        );
-
-            foreach (var connectionString in connectionStrings)
-            {
-                List<string> parts = connectionString.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries).ToList();
-                string port = parts.Where(x => x.ToLower().StartsWith("port")).FirstOrDefault()?.Split(new[] { '=' })[1];
-                string host = parts.Where(x => x.ToLower().StartsWith("server")).FirstOrDefault()?.Split(new[] { '=' })[1];
-                string user = parts.Where(x => x.ToLower().StartsWith("userid")).FirstOrDefault()?.Split(new[] { '=' })[1];
-                string pass = parts.Where(x => x.ToLower().StartsWith("pwd")).FirstOrDefault()?.Split(new[] { '=' })[1];
-                string databaseName = parts.Where(x => x.ToLower().StartsWith("database")).FirstOrDefault()?.Split(new[] { '=' })[1];
-                //databaseName = databaseName.ToLower().Replace("database=", "");
-                if (string.IsNullOrEmpty(databaseName) == false)
-                {
-                    string outputFileFullPath = Path.Combine(directoryPath, $"{nameDatePart}_{databaseName}.sql");
-                    string outputFileFullPathTemp = Path.Combine(directoryPath, "temp", $"{nameDatePart}_{databaseName}.sql");
-                    string arguments = $"/C mysqldump.exe -P {port} -h {host} --skip-extended-insert -u {user} -p{pass} {databaseName} > ";
-
-                    if (dBSettings.isZipEnable == true)
-                    {
-                        if (Directory.Exists(Path.Combine(directoryPath, "temp"))==false)
-                        {
-                            Directory.CreateDirectory(Path.Combine(directoryPath, "temp"));
-                        }
-                        arguments += $" \"{outputFileFullPathTemp}\"";
-                    }
-                    else
-                        arguments += $" \"{outputFileFullPath}\"";
-
-                    Process process = new Process();
-                    ProcessStartInfo startInfo = new ProcessStartInfo();
-                    startInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                    startInfo.FileName = @"C:\Windows\System32\cmd.exe";
-                    startInfo.Arguments = arguments;
-                    //startInfo.UseShellExecute = false;
-                    process.StartInfo = startInfo;
-                    process.Start();
-                    process.WaitForExit();
-                    //Thread.Sleep(5);
-                    if (dBSettings.isZipEnable == true)
-                    {
-                        System.IO.Compression.ZipFile.CreateFromDirectory(Path.Combine(directoryPath, "temp"), Path.Combine(directoryPath, $"{nameDatePart}_{databaseName}.zip"));
-
-                    }
-                }
-            }
-            if (Directory.Exists(Path.Combine(directoryPath, "temp")))
-            {
-                Directory.Delete(Path.Combine(directoryPath, "temp"), true);
-            }
-            return true;
-        }
-
         public static bool BackupFolders(string directoryPath, string nameDatePart)
         {
             FolderSettings folderSettings = GetSettingsFolder();
