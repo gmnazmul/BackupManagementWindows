@@ -168,8 +168,7 @@ namespace BackupManagement.Helper
             return true;
         }
         #endregion
-
-
+        
         #region GeneralSettings
         static string GetRandomString(int lenOfTheNewStr)
         {
@@ -253,22 +252,5 @@ namespace BackupManagement.Helper
             return true;
         }
         #endregion
-
-        public static bool BackupFolders(string directoryPath, string nameDatePart)
-        {
-            FolderSettings folderSettings = GetSettingsFolder();
-
-            string[] folderPaths = folderSettings.folderPaths.Split(
-                                            new[] { Environment.NewLine },
-                                            StringSplitOptions.RemoveEmptyEntries
-                                        );
-
-            foreach (var folderPath in folderPaths)
-            {
-                string outputFileName = nameDatePart + "_" + folderPath.Replace("\\", "_").Replace(":", "") + ".zip";
-                System.IO.Compression.ZipFile.CreateFromDirectory(folderPath, Path.Combine(directoryPath, outputFileName));
-            }
-            return true;
-        }
     }
 }

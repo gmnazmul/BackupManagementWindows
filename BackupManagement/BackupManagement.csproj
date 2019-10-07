@@ -54,6 +54,7 @@
     <Compile Include="Entities\FolderSettings.cs" />
     <Compile Include="Entities\DBSettings.cs" />
     <Compile Include="Entities\GeneralSettings.cs" />
+    <Compile Include="Entities\Settings.cs" />
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>

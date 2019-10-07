@@ -21,7 +21,11 @@ namespace BackupManagement
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtUsername.Text) == false && string.IsNullOrEmpty(txtPassword.Text) == false)
+            if (string.IsNullOrEmpty(txtUsername.Text) == false && string.IsNullOrEmpty(txtPassword.Text) == true)
+            {
+                txtPassword.Focus();
+            }
+            else if (string.IsNullOrEmpty(txtUsername.Text) == false && string.IsNullOrEmpty(txtPassword.Text) == false)
             {
                 GeneralSettings gs = BkupSettings.GetSettingsGeneral();
                 if (string.IsNullOrEmpty(gs.username) || string.IsNullOrEmpty(gs.password))
@@ -46,12 +50,14 @@ namespace BackupManagement
             else
             {
                 MessageBox.Show("Please enter Username and password");
+                txtUsername.Focus();
             }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+            Environment.Exit(Environment.ExitCode);
         }
     }
 }

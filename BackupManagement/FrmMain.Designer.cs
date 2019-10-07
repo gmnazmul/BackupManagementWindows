@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnDbSettings = new System.Windows.Forms.Button();
             this.btnBackupDB = new System.Windows.Forms.Button();
@@ -38,12 +39,14 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.lblLogs = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblLastData = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
+            this.txtLogsDb = new System.Windows.Forms.TextBox();
+            this.txtLogsFolder = new System.Windows.Forms.TextBox();
+            this.timerDateTime = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -67,7 +70,7 @@
             // 
             this.btnDbSettings.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnDbSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDbSettings.Location = new System.Drawing.Point(0, 300);
+            this.btnDbSettings.Location = new System.Drawing.Point(0, 388);
             this.btnDbSettings.Name = "btnDbSettings";
             this.btnDbSettings.Size = new System.Drawing.Size(195, 50);
             this.btnDbSettings.TabIndex = 4;
@@ -91,7 +94,7 @@
             // 
             this.btnFolderSettings.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnFolderSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFolderSettings.Location = new System.Drawing.Point(0, 350);
+            this.btnFolderSettings.Location = new System.Drawing.Point(0, 438);
             this.btnFolderSettings.Name = "btnFolderSettings";
             this.btnFolderSettings.Size = new System.Drawing.Size(195, 50);
             this.btnFolderSettings.TabIndex = 3;
@@ -111,7 +114,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(195, 450);
+            this.panel1.Size = new System.Drawing.Size(195, 538);
             this.panel1.TabIndex = 0;
             // 
             // btnBackupAll
@@ -142,7 +145,7 @@
             // 
             this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(0, 400);
+            this.btnExit.Location = new System.Drawing.Point(0, 488);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(195, 50);
             this.btnExit.TabIndex = 5;
@@ -159,28 +162,18 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(195, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(605, 450);
+            this.panel2.Size = new System.Drawing.Size(819, 538);
             this.panel2.TabIndex = 1;
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.lblLogs);
+            this.panel5.Controls.Add(this.txtLogsFolder);
+            this.panel5.Controls.Add(this.txtLogsDb);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(0, 144);
+            this.panel5.Location = new System.Drawing.Point(0, 117);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(605, 306);
+            this.panel5.Size = new System.Drawing.Size(819, 421);
             this.panel5.TabIndex = 3;
-            // 
-            // lblLogs
-            // 
-            this.lblLogs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblLogs.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogs.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.lblLogs.Location = new System.Drawing.Point(0, 0);
-            this.lblLogs.Name = "lblLogs";
-            this.lblLogs.Size = new System.Drawing.Size(605, 306);
-            this.lblLogs.TabIndex = 2;
-            this.lblLogs.Text = "--------------------------";
             // 
             // panel4
             // 
@@ -188,7 +181,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 44);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(605, 100);
+            this.panel4.Size = new System.Drawing.Size(819, 73);
             this.panel4.TabIndex = 2;
             // 
             // lblLastData
@@ -198,7 +191,7 @@
             this.lblLastData.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lblLastData.Location = new System.Drawing.Point(0, 0);
             this.lblLastData.Name = "lblLastData";
-            this.lblLastData.Size = new System.Drawing.Size(605, 100);
+            this.lblLastData.Size = new System.Drawing.Size(819, 73);
             this.lblLastData.TabIndex = 2;
             this.lblLastData.Text = "--------------------------";
             // 
@@ -209,7 +202,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(605, 44);
+            this.panel3.Size = new System.Drawing.Size(819, 44);
             this.panel3.TabIndex = 1;
             // 
             // lblDate
@@ -230,17 +223,51 @@
             this.lblTime.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblTime.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTime.ForeColor = System.Drawing.Color.White;
-            this.lblTime.Location = new System.Drawing.Point(580, 0);
+            this.lblTime.Location = new System.Drawing.Point(794, 0);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(25, 29);
             this.lblTime.TabIndex = 0;
             this.lblTime.Text = "-";
             // 
+            // txtLogsDb
+            // 
+            this.txtLogsDb.BackColor = System.Drawing.Color.Black;
+            this.txtLogsDb.Dock = System.Windows.Forms.DockStyle.Left;
+            this.txtLogsDb.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLogsDb.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.txtLogsDb.Location = new System.Drawing.Point(0, 0);
+            this.txtLogsDb.Multiline = true;
+            this.txtLogsDb.Name = "txtLogsDb";
+            this.txtLogsDb.ReadOnly = true;
+            this.txtLogsDb.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtLogsDb.Size = new System.Drawing.Size(419, 421);
+            this.txtLogsDb.TabIndex = 0;
+            // 
+            // txtLogsFolder
+            // 
+            this.txtLogsFolder.BackColor = System.Drawing.Color.Black;
+            this.txtLogsFolder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtLogsFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLogsFolder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.txtLogsFolder.Location = new System.Drawing.Point(419, 0);
+            this.txtLogsFolder.Multiline = true;
+            this.txtLogsFolder.Name = "txtLogsFolder";
+            this.txtLogsFolder.ReadOnly = true;
+            this.txtLogsFolder.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtLogsFolder.Size = new System.Drawing.Size(400, 421);
+            this.txtLogsFolder.TabIndex = 1;
+            // 
+            // timerDateTime
+            // 
+            this.timerDateTime.Enabled = true;
+            this.timerDateTime.Interval = 500;
+            this.timerDateTime.Tick += new System.EventHandler(this.timerDateTime_Tick);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1014, 538);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.MinimumSize = new System.Drawing.Size(755, 388);
@@ -252,6 +279,7 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -274,9 +302,11 @@
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label lblLogs;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label lblLastData;
+        private System.Windows.Forms.TextBox txtLogsDb;
+        private System.Windows.Forms.TextBox txtLogsFolder;
+        private System.Windows.Forms.Timer timerDateTime;
     }
 }
 
