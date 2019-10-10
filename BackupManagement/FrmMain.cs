@@ -14,6 +14,10 @@ namespace BackupManagement
     {
         string machineName = Environment.MachineName;
         string nameDatePart = DateTime.Now.ToString("yyyyMMdd_HHmm");
+        int dbStatus = 0;
+        int folderStatus = 0;
+        int uploadStatus = 0;
+
         public FrmMain()
         {
             InitializeComponent();
