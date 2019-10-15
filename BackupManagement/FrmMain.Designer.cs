@@ -41,21 +41,22 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.txtLogsFolder = new System.Windows.Forms.TextBox();
             this.txtLogsDb = new System.Windows.Forms.TextBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.lblDbStatus = new System.Windows.Forms.Label();
+            this.lblFolderStatus = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblLastData = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.timerDateTime = new System.Windows.Forms.Timer(this.components);
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.lblDbStatus = new System.Windows.Forms.Label();
-            this.lblFolderStatus = new System.Windows.Forms.Label();
+            this.timerScheduler = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStart
@@ -208,6 +209,41 @@
             this.txtLogsDb.Size = new System.Drawing.Size(419, 394);
             this.txtLogsDb.TabIndex = 0;
             // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.Black;
+            this.panel6.Controls.Add(this.lblDbStatus);
+            this.panel6.Controls.Add(this.lblFolderStatus);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 100);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(819, 44);
+            this.panel6.TabIndex = 2;
+            // 
+            // lblDbStatus
+            // 
+            this.lblDbStatus.AutoSize = true;
+            this.lblDbStatus.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblDbStatus.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDbStatus.ForeColor = System.Drawing.Color.White;
+            this.lblDbStatus.Location = new System.Drawing.Point(0, 0);
+            this.lblDbStatus.Name = "lblDbStatus";
+            this.lblDbStatus.Size = new System.Drawing.Size(25, 29);
+            this.lblDbStatus.TabIndex = 1;
+            this.lblDbStatus.Text = "-";
+            // 
+            // lblFolderStatus
+            // 
+            this.lblFolderStatus.AutoSize = true;
+            this.lblFolderStatus.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblFolderStatus.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFolderStatus.ForeColor = System.Drawing.Color.White;
+            this.lblFolderStatus.Location = new System.Drawing.Point(794, 0);
+            this.lblFolderStatus.Name = "lblFolderStatus";
+            this.lblFolderStatus.Size = new System.Drawing.Size(25, 29);
+            this.lblFolderStatus.TabIndex = 0;
+            this.lblFolderStatus.Text = "-";
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Gray;
@@ -270,40 +306,10 @@
             this.timerDateTime.Interval = 500;
             this.timerDateTime.Tick += new System.EventHandler(this.timerDateTime_Tick);
             // 
-            // panel6
+            // timerScheduler
             // 
-            this.panel6.BackColor = System.Drawing.Color.Black;
-            this.panel6.Controls.Add(this.lblDbStatus);
-            this.panel6.Controls.Add(this.lblFolderStatus);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 100);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(819, 44);
-            this.panel6.TabIndex = 2;
-            // 
-            // lblDbStatus
-            // 
-            this.lblDbStatus.AutoSize = true;
-            this.lblDbStatus.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblDbStatus.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDbStatus.ForeColor = System.Drawing.Color.White;
-            this.lblDbStatus.Location = new System.Drawing.Point(0, 0);
-            this.lblDbStatus.Name = "lblDbStatus";
-            this.lblDbStatus.Size = new System.Drawing.Size(25, 29);
-            this.lblDbStatus.TabIndex = 1;
-            this.lblDbStatus.Text = "-";
-            // 
-            // lblFolderStatus
-            // 
-            this.lblFolderStatus.AutoSize = true;
-            this.lblFolderStatus.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblFolderStatus.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFolderStatus.ForeColor = System.Drawing.Color.White;
-            this.lblFolderStatus.Location = new System.Drawing.Point(794, 0);
-            this.lblFolderStatus.Name = "lblFolderStatus";
-            this.lblFolderStatus.Size = new System.Drawing.Size(25, 29);
-            this.lblFolderStatus.TabIndex = 0;
-            this.lblFolderStatus.Text = "-";
+            this.timerScheduler.Interval = 30000;
+            this.timerScheduler.Tick += new System.EventHandler(this.timerScheduler_Tick);
             // 
             // FrmMain
             // 
@@ -322,11 +328,11 @@
             this.panel2.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -354,6 +360,7 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label lblDbStatus;
         private System.Windows.Forms.Label lblFolderStatus;
+        private System.Windows.Forms.Timer timerScheduler;
     }
 }
 

@@ -14,6 +14,8 @@ namespace BackupManagement
     {
         string machineName = Environment.MachineName;
         string nameDatePart = DateTime.Now.ToString("yyyyMMdd_HHmm");
+        bool isScheduleRunning = false;
+
         int dbStatus = 0;
         int folderStatus = 0;
         int uploadStatus = 0;
@@ -38,16 +40,40 @@ namespace BackupManagement
         {
             lblTime.Text = DateTime.Now.ToString("HH:mm:ss");
         }
+
+        private void timerScheduler_Tick(object sender, EventArgs e)
+        {
+            if (uploadStatus == 0)
+            {
+                if ((dbStatus == 2 && folderStatus == 2) || (dbStatus == 2 && folderStatus == 0) || (dbStatus == 0 && folderStatus == 2))
+                {
+                    uploadStatus = 1;
+                    //Call Upload
+                }
+            }
+        }
+
         private void BtnStart_Click(object sender, EventArgs e)
         {
-
+            if (btnStart.Text == "Start")
+            {
+                btnStart.Text = "Stop";
+                isScheduleRunning = true;
+                timerScheduler.Enabled = true;
+            }
+            else
+            {
+                btnStart.Text = "Start";
+                isScheduleRunning = false;
+                timerScheduler.Enabled = false;
+            }
         }
 
         private void btnBackup_Click(object sender, EventArgs e)
         {
             DBSettings dBSettings = BkupSettings.GetSettingsDB();
             nameDatePart = DateTime.Now.ToString("yyyyMMdd_HHmm");
-
+            dbStatus = 1;
             var thDB = new Thread(BackupDatabase);
             thDB.Start();
         }
@@ -57,6 +83,7 @@ namespace BackupManagement
 
             FolderSettings folderSettings = BkupSettings.GetSettingsFolder();
             nameDatePart = DateTime.Now.ToString("yyyyMMdd_HHmm");
+            folderStatus = 1;
             var thFo = new Thread(BackupFolders);
             thFo.Start();
         }
@@ -67,7 +94,8 @@ namespace BackupManagement
 
             var th = new Thread(BackupDatabase);
             th.Start();
-
+            dbStatus = 1;
+            folderStatus = 1;
             var thFo = new Thread(BackupFolders);
             thFo.Start();
         }
@@ -210,6 +238,7 @@ namespace BackupManagement
             gs.lastDBBackupTime = DateTime.Now;
             BkupSettings.SaveSettingsGeneral(gs);
             #endregion
+            dbStatus = 2;
             UpdateLastUpdateDate();
         }
 
@@ -240,6 +269,7 @@ namespace BackupManagement
             gs.lastFolderBackupTime = DateTime.Now;
             BkupSettings.SaveSettingsGeneral(gs);
             #endregion
+            folderStatus = 2;
             UpdateLastUpdateDate();
         }
 
@@ -268,5 +298,6 @@ namespace BackupManagement
             });
         }
         #endregion
+
     }
 }
