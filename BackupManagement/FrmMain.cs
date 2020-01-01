@@ -128,21 +128,34 @@ namespace BackupManagement
         private void UpdateLastUpdateDate()
         {
             GeneralSettings gs = BkupSettings.GetSettingsGeneral();
+            string message = $"";
 
             if (gs.lastDBBackupTime > new DateTime(2001, 1, 1))
-                lblLastData.Text = $"Last DB backup: {gs.lastDBBackupTime.ToString("yyyy-MM-dd HH:mm")}";
+                message = $"Last DB backup: {gs.lastDBBackupTime.ToString("yyyy-MM-dd HH:mm")}";
             else
-                lblLastData.Text = $"Last DB backup: - ";
+                message = $"Last DB backup: - ";
 
             if (gs.lastFolderBackupTime > new DateTime(2001, 1, 1))
-                lblLastData.Text += $"{Environment.NewLine}Last Folder backup: {gs.lastFolderBackupTime.ToString("yyyy-MM-dd HH:mm")}";
+                message += $"{Environment.NewLine}Last Folder backup: {gs.lastFolderBackupTime.ToString("yyyy-MM-dd HH:mm")}";
             else
-                lblLastData.Text += $"{Environment.NewLine}Last Folder backup: - ";
+                message += $"{Environment.NewLine}Last Folder backup: - ";
 
             if (gs.lastUploadTime > new DateTime(2001, 1, 1))
-                lblLastData.Text += $"{Environment.NewLine}Last Upload: {gs.lastUploadTime.ToString("yyyy-MM-dd HH:mm")}";
+                message += $"{Environment.NewLine}Last Upload: {gs.lastUploadTime.ToString("yyyy-MM-dd HH:mm")}";
             else
-                lblLastData.Text += $"{Environment.NewLine}Last Upload: - ";
+                message += $"{Environment.NewLine}Last Upload: - ";
+
+            if (InvokeRequired)
+            {
+                this.Invoke((MethodInvoker)delegate ()
+                {
+                    lblLastData.Text = message;
+                });
+            }
+            else
+            {
+                lblLastData.Text = message;
+            }
         }
 
         private void ClockUpdate()
@@ -275,7 +288,16 @@ namespace BackupManagement
 
         private void UploadBackup()
         {
+            //Upload Database Backup Folders and delete
+            /*
+             * 1. Get OutputFolder
+             * 2. get folder list
+             * 3. check in s3 if this folder is already uploaded or not
+             * 4. if not uploaded then upload it
+             * 5. if this is not the last folder then delete the folder
+             */
 
+            //Upload Folder Backup Folders and delete
         }
 
         private void ShowLogDb(string message)
